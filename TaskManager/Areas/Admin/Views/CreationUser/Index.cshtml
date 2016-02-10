@@ -1,0 +1,55 @@
+﻿@{
+    ViewBag.Title = "Creation account";
+}
+@model TaskManager.Models.RegisterModel
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+    <b>@ViewBag.message</b><br>
+    <fieldset style="display : inline">
+        <legend>Creation form</legend>            
+        <table>
+            <tr>
+                <td>Role:</td>
+                <td>
+                 @{
+                    <select name="role">
+                    <option  value="">none</option>
+                    @foreach(var role in (IEnumerable<string>)ViewBag.roles)
+                    {        
+                      <option  value="@role">@role</option>
+                    }
+                    </select>
+                   }
+                </td>
+            </tr>
+            <tr>
+               <td>@Html.LabelFor(m => m.Login)</td>
+               <td>@Html.TextBoxFor(m => m.Login)</td>
+               <td>@Html.ValidationMessageFor(m => m.Login)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.Email)</td>
+                <td>@Html.TextBoxFor(m => m.Email)</td>
+                <td>@Html.ValidationMessageFor(m => m.Email)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.Password)</td>
+                <td>@Html.PasswordFor(m => m.Password)</td>
+                <td>@Html.ValidationMessageFor(m => m.Password)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.ConfirmPassword)</td>
+                <td>@Html.PasswordFor(m => m.ConfirmPassword)</td>
+                <td>@Html.ValidationMessageFor(m => m.ConfirmPassword)</td>
+            </tr>
+        </table>
+        <input type="submit" value="Create account" />
+    </fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

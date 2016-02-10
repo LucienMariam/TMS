@@ -1,0 +1,33 @@
+﻿@using BLL.Interfaces;
+@model TaskManager.Models.LoginModel
+
+@using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl })) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <fieldset style="display : inline">
+        <legend>Login Form</legend>
+        <table>
+            <tr>
+                <td>@Html.LabelFor(m => m.EmailOrLogin)</td>
+                <td>@Html.TextBoxFor(m => m.EmailOrLogin)</td>
+                <td>@Html.ValidationMessageFor(m => m.EmailOrLogin)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.Password)</td>
+                <td>@Html.PasswordFor(m => m.Password)</td>
+                <td>@Html.ValidationMessageFor(m => m.Password)</td>
+            </tr>
+            <tr>
+                <td>@Html.CheckBoxFor(m => m.RememberMe)
+                @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })</td>                
+            </tr>
+        </table>
+        <input type="submit" value="Lon in" />
+    </fieldset>       
+}
+
+<p>@Html.ActionLink("Register", "Register") if you don't have an account.</p>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

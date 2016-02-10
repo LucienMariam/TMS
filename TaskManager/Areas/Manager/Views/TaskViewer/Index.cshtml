@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "Task viewer";
+}
+
+
+<h2>@ViewBag.message</h2>
+
+@Html.ActionLink("See tasks of user", "UserTasks", "TaskViewer")<br>
+@Html.ActionLink("See users on task", "UsersOnTask", "TaskViewer")<br>
+@Html.ActionLink("Make assignments to user", "BoundUserToTasks", "TaskViewer")<br>
+@Html.ActionLink("Give task to users", "BoundTaskToUsers", "TaskViewer")<br>
+@Html.ActionLink("Delete tasks from user", "DeleteUserFromTasks", "TaskViewer")<br>
+@Html.ActionLink("Delete task from users", "DeleteTaskFromUsers", "TaskViewer")
